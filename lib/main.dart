@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       onGenerateRoute: AppRouter.generateRoute,
-      home: TodoScreen(),
+      home: MyHomePage(),
     );
   }
 }
@@ -71,37 +71,38 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Responsive(
-        mobile: const ListEmailScreen(),
-        tablet: const Row(
-          children: [
-            Expanded(
-              flex: 4,
-              child: ListEmailScreen(),
-            ),
-            Expanded(
-              flex: 6,
-              child: EmailDetail(),
-            ),
-          ],
-        ),
-        desktop: Row(
-          children: [
-            Expanded(
-              flex: size.width > 1340 ? 2 : 4,
-              child: const SlideMenu(),
-            ),
-            Expanded(
-              flex: size.width > 1340 ? 3 : 5,
-              child: const ListEmailScreen(),
-            ),
-            Expanded(
-              flex: size.width > 1340 ? 8 : 10,
-              child: const EmailDetail(),
-            ),
-          ],
-        ),
-      ),
+      // body: Responsive(
+      //   mobile: ListEmailScreen(),
+      //   tablet: Row(
+      //     children: [
+      //       Expanded(
+      //         flex: 4,
+      //         child: ListEmailScreen(),
+      //       ),
+      //       const Expanded(
+      //         flex: 6,
+      //         child: EmailDetail(),
+      //       ),
+      //     ],
+      //   ),
+      //   desktop: Row(
+      //     children: [
+      //       Expanded(
+      //         flex: size.width > 1340 ? 2 : 4,
+      //         child: const SlideMenu(),
+      //       ),
+      //       Expanded(
+      //         flex: size.width > 1340 ? 3 : 5,
+      //         child: ListEmailScreen(),
+      //       ),
+      //       Expanded(
+      //         flex: size.width > 1340 ? 8 : 10,
+      //         child: const EmailDetail(),
+      //       ),
+      //     ],
+      //   ),
+      // ),
+      body: ListEmailScreen(),
     );
   }
 }

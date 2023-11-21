@@ -9,7 +9,7 @@ extension ApiURLState on ApiURL{
   String get path {
     switch (this){
       case ApiURL.getList:
-        return '';
+        return 'https://pokeapi.co/api/v2/berry/1/';
       case ApiURL.getDetail:
         return '';
       default:

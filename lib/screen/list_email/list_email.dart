@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_responsive/data/model/DataModel.dart';
 import 'package:flutter_responsive/screen/list_email/item_email.dart';
+import 'package:flutter_responsive/screen/list_email/list_email_provider.dart';
 import 'package:flutter_responsive/screen/slide_menu.dart';
 import 'package:flutter_responsive/utils/responsive.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod/riverpod.dart';
 
-class ListEmailScreen extends StatefulWidget {
-  const ListEmailScreen({super.key});
 
-  @override
-  State<ListEmailScreen> createState() => _ListEmailScreenState();
-}
+final listEmailProvider = NotifierProvider<EmailList, List<DataModel>>(EmailList.new);
 
-class _ListEmailScreenState extends State<ListEmailScreen> {
+
+class ListEmailScreen extends ConsumerWidget {
+  ListEmailScreen({super.key});
+
   final GlobalKey<ScaffoldState> globalKey = GlobalKey();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final getData = ref.read(listEmailProvider.notifier).getEmails();
+    print("Thảooooooooooo  ");
     return Scaffold(
       key: globalKey,
       drawer: ConstrainedBox(
@@ -30,14 +35,14 @@ class _ListEmailScreenState extends State<ListEmailScreen> {
               children: [
                 !Responsive.isDesktop(context)
                     ? IconButton(
-                        onPressed: () {
-                          globalKey.currentState?.openDrawer();
-                        },
-                        icon: const Icon(
-                          Icons.menu,
-                          size: 24,
-                        ),
-                      )
+                  onPressed: () {
+                    globalKey.currentState?.openDrawer();
+                  },
+                  icon: const Icon(
+                    Icons.menu,
+                    size: 24,
+                  ),
+                )
                     : const SizedBox(),
                 const SizedBox(
                   width: 5,

@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter_responsive/services/api/api_url.dart';
 import 'package:flutter_responsive/services/api/dio_provider.dart';
+// import 'package:http/http.dart';
 
 class APIDataStore {
   Dio dio = DioProvider.instance();
@@ -49,9 +50,10 @@ class APIDataStore {
         default:
           break;
       }
-      log('========== Response request: $response ==========');
+      // log('========== Response request:\n $response \n==========');
+      return response;
     } on DioException catch (e) {
-      log('========== Have an error: ${e.response?.data}\n ${e.response?.statusCode}\n ${e.message} ==========');
+      log('========== Have an error:\n ${e.response?.data}\n ${e.response?.statusCode}\n ${e.message} \n==========');
     }
   }
 }

@@ -24,7 +24,7 @@ class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case LIST_EMAIL:
-        return MaterialPageRoute(builder: (_) => const ListEmailScreen());
+        return MaterialPageRoute(builder: (_) => ListEmailScreen());
       case TOP_SECTION:
         return MaterialPageRoute(builder: (_) => const TopSection());
       case HOME_SCREEN:
