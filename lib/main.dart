@@ -4,6 +4,7 @@ import 'package:flutter_responsive/screen/counter_screen/counter_provider.dart';
 import 'package:flutter_responsive/screen/email_detail/email_detail.dart';
 import 'package:flutter_responsive/screen/list_email/list_email.dart';
 import 'package:flutter_responsive/screen/slide_menu.dart';
+import 'package:flutter_responsive/screen/todo_screen/todo_screen.dart';
 import 'package:flutter_responsive/utils/responsive.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -53,7 +54,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       onGenerateRoute: AppRouter.generateRoute,
-      home: MyHomePageProvider(),
+      home: TodoScreen(),
     );
   }
 }

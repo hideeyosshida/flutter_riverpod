@@ -13,5 +13,3 @@ class Counter extends StateNotifier<int> {
 }
 
 final counterProvider = StateNotifierProvider<Counter, int>((ref) => Counter());
-
-typedef $Counter = AutoDisposeNotifier<int>;
