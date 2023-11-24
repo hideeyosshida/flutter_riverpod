@@ -4,7 +4,8 @@ import 'package:g_json/g_json.dart';
 class DataModel{
   FlavorModel? flavor;
   int? potency;
-  DataModel({this.flavor, this.potency});
+  bool? isChecked;
+  DataModel({this.flavor, this.potency, this.isChecked = false});
 
   Map<String, dynamic> toJson(){
     final data = <String, dynamic>{};
@@ -16,5 +17,6 @@ class DataModel{
   DataModel.fromJson(JSON json) {
     flavor = FlavorModel.fromJson(json['flavor']);
     potency = json['potency'].integerValue;
+    isChecked = false;
   }
 }

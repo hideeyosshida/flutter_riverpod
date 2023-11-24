@@ -5,6 +5,7 @@ import 'package:flutter_responsive/data/model/DataModel.dart';
 import 'package:flutter_responsive/services/api/api_url.dart';
 import 'package:flutter_responsive/services/api/base_api.dart';
 import 'package:g_json/g_json.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 class GetListRepository{
   APIDataStore apiDataStore = APIDataStore();
@@ -17,7 +18,6 @@ class GetListRepository{
         .listValue
         .map((e) => DataModel.fromJson(e))
         .toList();
-    print("------> ${DataModel.fromJson(JSON(data).listValue.first).flavor?.url}");
     return json;
   }
 }

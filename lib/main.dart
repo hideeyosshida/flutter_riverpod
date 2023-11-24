@@ -1,14 +1,15 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_responsive/screen/app_router.dart';
 import 'package:flutter_responsive/screen/counter_screen/counter_provider.dart';
 import 'package:flutter_responsive/screen/email_detail/email_detail.dart';
 import 'package:flutter_responsive/screen/list_email/list_email.dart';
-import 'package:flutter_responsive/screen/slide_menu.dart';
-import 'package:flutter_responsive/screen/todo_screen/todo_screen.dart';
-import 'package:flutter_responsive/utils/responsive.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -53,8 +54,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      builder: (context, child) {
+        child = BotToastInit()(context, child);
+        return child;
+      },
+      navigatorObservers: [BotToastNavigatorObserver()],
       onGenerateRoute: AppRouter.generateRoute,
-      home: MyHomePage(),
+      home: const MyHomePage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
